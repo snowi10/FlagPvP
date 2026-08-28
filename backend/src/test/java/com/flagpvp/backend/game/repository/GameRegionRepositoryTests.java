@@ -5,8 +5,10 @@ import com.flagpvp.backend.game.domain.entity.GameRegion;
 import com.flagpvp.backend.game.domain.entity.GameRegionId;
 import com.flagpvp.backend.game.domain.entity.Regions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jdbc.test.autoconfigure.DataJdbcTest;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.annotation.DirtiesContext;
 
 import java.util.List;
@@ -63,27 +65,22 @@ public class GameRegionRepositoryTests {
     @Test
     @DirtiesContext
     public void shouldCreateAGameRegionWithAGameThatExists() {
-        GameRegionId id = new GameRegionId(12345L, Regions.ASIA);
-        Optional<GameRegion> gameRegion = gameRegionRepository.findByGameRegionId(id);
-        System.out.println(gameRegion.isPresent());
 
+        // Creates a new game with the EUROPE region and saves it to the database.
         GameRegionId newId = new GameRegionId(12345L, Regions.EUROPE);
-        Optional<GameRegion> newGameRegion = gameRegionRepository.findByGameRegionId(newId);
-        System.out.println(newGameRegion.isPresent());
-
-        // TODO: GameRegion is not being saved to the database.
         gameRegionRepository.save(new GameRegion(newId));
-        newGameRegion = gameRegionRepository.findByGameRegionId(newId);
-        System.out.println(newGameRegion.isPresent());
+
+        // Checks that the new GameRegion exists in the database.
+        Optional<GameRegion> newGameRegion = gameRegionRepository.findByGameRegionId(newId);
+        assertTrue(newGameRegion.isPresent());
     }
 
-    //@Test
+    @Test
     public void shouldNotCreateAGameRegionWithAGameThatDoesNotExist() {
 
+        // Creates a GameRegion with a game ID that does not exist
+        // and checks that an error is thrown.
         GameRegion newGameRegion = new GameRegion(new GameRegionId(0L, Regions.EUROPE));
-         gameRegionRepository.save(newGameRegion);
-
-        Optional<GameRegion> gameRegion = gameRegionRepository.findByGameRegionId(new GameRegionId(0L, Regions.EUROPE));
-        assertFalse(gameRegion.isPresent());
+        assertThrows(DataIntegrityViolationException.class, () ->  gameRegionRepository.save(newGameRegion) );
     }
 }

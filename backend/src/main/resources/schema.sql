@@ -38,6 +38,7 @@ CREATE TABLE Game_Region
 (
     game_id INT NOT NULL,
     region VARCHAR(20) NOT NULL,
+    version INT,
     PRIMARY KEY(game_id, region),
     --UNIQUE(game_id, region),
     FOREIGN KEY(game_id) REFERENCES Game(id) ON DELETE CASCADE,
