@@ -1,10 +1,7 @@
 package com.flagpvp.backend.game.controller;
 
-import com.flagpvp.backend.game.controller.dto.NewGameRequestDto;
 import com.flagpvp.backend.game.domain.entity.Game;
 import com.flagpvp.backend.game.repository.GameRepository;
-import com.flagpvp.backend.game.service.NewGameRequest;
-import com.flagpvp.backend.game.service.impl.GameServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;

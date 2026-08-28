@@ -1,6 +1,5 @@
 package com.flagpvp.backend.game.repository;
 
-import com.flagpvp.backend.game.domain.entity.Regions;
 import com.flagpvp.backend.game.domain.entity.SovereignState;
 import org.springframework.data.repository.CrudRepository;
 

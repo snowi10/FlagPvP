@@ -1,17 +1,14 @@
 package com.flagpvp.backend.game.repository;
 
-import com.flagpvp.backend.game.domain.entity.Game;
 import com.flagpvp.backend.game.domain.entity.GameRegion;
 import com.flagpvp.backend.game.domain.entity.GameRegionId;
 import com.flagpvp.backend.game.domain.entity.Regions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jdbc.test.autoconfigure.DataJdbcTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.annotation.DirtiesContext;
 
-import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;

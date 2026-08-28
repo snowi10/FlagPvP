@@ -1,6 +1,5 @@
 package com.flagpvp.backend.game.service.impl;
 
-import com.flagpvp.backend.game.controller.dto.NewGameRequestDto;
 import com.flagpvp.backend.game.domain.entity.Game;
 import com.flagpvp.backend.game.repository.GameRepository;
 import com.flagpvp.backend.game.service.GameService;

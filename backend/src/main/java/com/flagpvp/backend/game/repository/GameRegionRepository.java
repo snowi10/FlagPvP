@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Optional;
 
 /**
- * Repository for game region.
+ * Repository for game-region.
  */
 public interface GameRegionRepository extends CrudRepository<GameRegion, GameRegionId> {
 
