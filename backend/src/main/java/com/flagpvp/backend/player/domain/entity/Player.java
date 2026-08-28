@@ -28,4 +28,16 @@ public class Player {
         this.points = points;
     }
 
+    // Setters for Player attributes.
+    public void setId(String id) { this.id = id; }
+    public void setGameId(Long gameId) { this.gameId = gameId; }
+    public void setReady(Boolean ready) { this.ready = ready; }
+    public void setPoints(Integer points) { this.points = points; }
+
+    // Getters for Player attributes.
+    public String getId() { return id; }
+    public Long getGameId() { return gameId; }
+    public Boolean getReady() { return ready; }
+    public Integer getPoints() { return points; }
+
 }
