@@ -55,5 +55,6 @@ CREATE TABLE Player
     points INT NOT NULL DEFAULT 0,
     PRIMARY KEY (id),
     UNIQUE (id),
-    FOREIGN KEY (game_id) REFERENCES Game(id) ON DELETE SET NULL
+    FOREIGN KEY (game_id) REFERENCES Game(id) ON DELETE SET NULL,
+    CHECK ((game_id IS NULL AND points = 0) OR (game_id IS NOT NULL))
 );

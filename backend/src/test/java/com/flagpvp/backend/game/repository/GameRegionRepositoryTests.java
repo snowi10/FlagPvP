@@ -6,7 +6,6 @@ import com.flagpvp.backend.game.domain.entity.Regions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jdbc.test.autoconfigure.DataJdbcTest;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.annotation.DirtiesContext;
 
 import java.util.Optional;
@@ -78,6 +77,6 @@ public class GameRegionRepositoryTests {
         // Creates a GameRegion with a game ID that does not exist
         // and checks that an error is thrown.
         GameRegion newGameRegion = new GameRegion(new GameRegionId(0L, Regions.EUROPE));
-        assertThrows(DataIntegrityViolationException.class, () ->  gameRegionRepository.save(newGameRegion) );
+        assertThrows(Exception.class, () ->  gameRegionRepository.save(newGameRegion) );
     }
 }

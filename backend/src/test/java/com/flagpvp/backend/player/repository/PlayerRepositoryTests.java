@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DataJdbcTest
 public class PlayerRepositoryTests {
@@ -70,12 +71,25 @@ public class PlayerRepositoryTests {
         // checks that they exist in the repository,
         // and checks that all values are correct.
         Player newPlayer2 = new Player();
-        newPlayer.setGameId(12345L);
-        newPlayer.setReady(true);
+        newPlayer2.setGameId(12345L);
+        newPlayer2.setReady(true);
+        newPlayer2.setPoints(10);
         playerRepository.save(newPlayer2);
         Optional<Player> getPlayer2 = findById(newPlayer2.getId());
         assertTrue(getPlayer2.isPresent());
         assertEquals(newPlayer2.getId(), getPlayer2.get().getId());
+        assertEquals(true, getPlayer2.get().getReady());
+        assertEquals(10, getPlayer2.get().getPoints());
+    }
+
+    @Test
+    public void shouldNotCreateANewPlayerWithAGameThatDoesNotExist() {
+
+        // Creates a new player with an invalid game ID
+        // and checks that this causes an error.
+        Player invalidPlayer = new Player();
+        invalidPlayer.setGameId(1789L);
+        assertThrows(Exception.class, () -> playerRepository.save(invalidPlayer));
     }
 
     // Method to refactor PlayerRepository findById() method. 
