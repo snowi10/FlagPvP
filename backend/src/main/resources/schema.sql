@@ -46,11 +46,14 @@ CREATE TABLE Game_Region
 );
 
 -- Players in the game.
+-- TODO: Might add display_name column for users to create their own name in a game
 CREATE TABLE Player
 (
     id VARCHAR(40) NOT NULL DEFAULT UUID(), -- TODO: Figure out a better way to randomly generate a user ID.
     game_id INT DEFAULT NULL,
     ready BIT NOT NULL DEFAULT 0,
     points INT NOT NULL DEFAULT 0,
+    PRIMARY KEY (id),
+    UNIQUE (id),
     FOREIGN KEY (game_id) REFERENCES Game(id) ON DELETE SET NULL
 );

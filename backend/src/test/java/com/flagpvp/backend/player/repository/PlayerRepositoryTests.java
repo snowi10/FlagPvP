@@ -66,17 +66,16 @@ public class PlayerRepositoryTests {
         assertFalse(getPlayer.get().getReady());
         assertEquals(0, getPlayer.get().getPoints());
 
-        // Creates a new player with supplied settings.
-        // TODO: Error, player ID should not be null.
-        /*
+        // Creates a new player with supplied settings,
+        // checks that they exist in the repository,
+        // and checks that all values are correct.
         Player newPlayer2 = new Player();
         newPlayer.setGameId(12345L);
         newPlayer.setReady(true);
-        playerRepository.save(newPlayer);
+        playerRepository.save(newPlayer2);
         Optional<Player> getPlayer2 = findById(newPlayer2.getId());
         assertTrue(getPlayer2.isPresent());
         assertEquals(newPlayer2.getId(), getPlayer2.get().getId());
-         */
     }
 
     // Method to refactor PlayerRepository findById() method. 

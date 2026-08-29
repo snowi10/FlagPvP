@@ -11,21 +11,11 @@ import org.springframework.data.relational.core.mapping.Table;
 @Table
 public class Game {
 
-    @Id
-    @Column
-    private Long id; // The game ID.
-
-    @Column
-    private GameMode mode; // Specifies a singleplayer game or a multiplayer game.
-
-    @Column
-    private Boolean timed; // Specifies whether the game is timed or not.
-
-    @Column
-    private Integer playerCount; // The number of players in the game.
-
-    @Column
-    private Boolean inProgress; // Specifies whether the game is in progress or not.
+    @Id @Column private Long id; // The game ID.
+    @Column private GameMode mode; // Specifies a singleplayer game or a multiplayer game.
+    @Column private Boolean timed; // Specifies whether the game is timed or not.
+    @Column private Integer playerCount; // The number of players in the game.
+    @Column private Boolean inProgress; // Specifies whether the game is in progress or not.
 
     // Default settings for the game.
     public Game() {

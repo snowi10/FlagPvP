@@ -9,20 +9,20 @@ import org.springframework.data.relational.core.mapping.Column;
  */
 @Table
 public class Player {
-    @Id @Column String id;
-    @Column Long gameId;
-    @Column Boolean ready;
-    @Column Integer points;
+    @Id @Column private String id; // The player ID.
+    @Column private Long  gameId; // The game ID that the player is currently in.
+    @Column private Boolean ready; // Specifies whether the player is ready to play or not.
+    @Column private Integer points; // Current points that the player has in a game.
 
     // Constructor with default values.
     public Player() {
-        gameId = null;
         ready = false;
         points = 0;
     }
 
     // Constructor with supplied values.
-    public Player(Long gameId, Boolean ready, Integer points) {
+    public Player(String id, Long gameId, Boolean ready, Integer points) {
+        this.id = id;
         this.gameId = gameId;
         this.ready = ready;
         this.points = points;

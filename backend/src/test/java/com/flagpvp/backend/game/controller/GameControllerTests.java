@@ -12,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.*;
 import org.springframework.test.annotation.DirtiesContext;
 
-
 import java.net.URI;
 
 import static org.assertj.core.api.Assertions.assertThat;
