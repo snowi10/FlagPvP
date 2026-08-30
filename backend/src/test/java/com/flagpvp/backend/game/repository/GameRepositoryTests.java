@@ -73,7 +73,7 @@ public class GameRepositoryTests {
 
     @Test
     @DirtiesContext
-    public void shouldUpdateAGameThatExists()  {
+    public void shouldUpdateAGame()  {
 
         // Finds an existing game in the database.
         Optional<Game> game = gameRepository.findById(12345L);
@@ -94,6 +94,13 @@ public class GameRepositoryTests {
         assertEquals(true, game.get().getTimed());
         assertEquals(2, game.get().getPlayerCount());
         assertEquals(true, game.get().getInProgress());
+    }
+
+    // TODO: Fill in this method.
+    @Test
+    @DirtiesContext
+    public void playerCountShouldNotBeGreaterThanOneInSinglePlayerMode() {
+         
     }
 
     @Test

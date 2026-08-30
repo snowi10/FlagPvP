@@ -55,11 +55,12 @@ public class PlayerRepositoryTests {
     @DirtiesContext
     public void shouldCreateANewPlayer() {
 
-        // Creates a new player with default values,
-        // checks that they exist in the repository,
-        // and checks that all values are correct.
+        // Creates a new player with default values.
         Player newPlayer = new Player();
         playerRepository.save(newPlayer); 
+
+        // Checks that the player exists in the repository
+        // and checks that all values are correct.
         Optional<Player> getPlayer = findById(newPlayer.getId());
         assertTrue(getPlayer.isPresent());
         assertEquals(newPlayer.getId(), getPlayer.get().getId());
@@ -67,14 +68,15 @@ public class PlayerRepositoryTests {
         assertFalse(getPlayer.get().getReady());
         assertEquals(0, getPlayer.get().getPoints());
 
-        // Creates a new player with supplied settings,
-        // checks that they exist in the repository,
-        // and checks that all values are correct.
+        // Creates a new player with supplied settings.
         Player newPlayer2 = new Player();
         newPlayer2.setGameId(12345L);
         newPlayer2.setReady(true);
         newPlayer2.setPoints(10);
         playerRepository.save(newPlayer2);
+
+        // Checks that they exist in the repository
+        // and checks that all values are correct.
         Optional<Player> getPlayer2 = findById(newPlayer2.getId());
         assertTrue(getPlayer2.isPresent());
         assertEquals(newPlayer2.getId(), getPlayer2.get().getId());
@@ -90,6 +92,58 @@ public class PlayerRepositoryTests {
         Player invalidPlayer = new Player();
         invalidPlayer.setGameId(1789L);
         assertThrows(Exception.class, () -> playerRepository.save(invalidPlayer));
+    }
+
+    @Test
+    @DirtiesContext
+    public void shouldUpdateAPlayer() {
+
+        // Gets an existing player and checks that
+        // all the values are correct.
+        Optional<Player> eden = findById("eden9");
+        assertTrue(eden.isPresent());
+        assertEquals("eden9", eden.get().getId());
+        assertEquals(12345L, eden.get().getGameId());
+        assertEquals(false, eden.get().getReady());
+        assertEquals(0, eden.get().getPoints());
+
+        // Updates the player with new values
+        // and saves them to the repository.
+        Player updateEden = new Player(eden.get().getId(), 67890L, true, eden.get().getPoints());
+        playerRepository.save(updateEden);
+
+        // Gets the updated player and checks that they
+        // have the correct values.
+        Optional<Player> getEden = findById("eden9");
+        assertTrue(getEden.isPresent());
+        assertEquals("eden9", getEden.get().getId());
+        assertEquals(67890L, getEden.get().getGameId());
+        assertEquals(true, getEden.get().getReady());
+        assertEquals(0, getEden.get().getPoints());
+    }
+
+    @Test
+    public void playerShouldNotHaveAnyPointsAndCannotBeReadyWhenNotInAGame() {
+
+        // Gets an existing player and checks that they
+        // have the correct values.
+        Optional<Player> player = findById("snowi10");
+        assertTrue(player.isPresent());
+        assertEquals(12345L, player.get().getGameId());
+        assertEquals(false, player.get().getReady());
+        assertEquals(0, player.get().getPoints());
+
+        // Updates the player with points when not in a game
+        // and checks that an error occurs.
+        Player invalidPlayer = new Player(player.get().getId(), null, player.get().getReady(), 1);
+        assertThrows(Exception.class, () -> playerRepository.save(invalidPlayer)); 
+
+        // Updates the player to being ready when not in a game
+        // and checks that an error occurs.
+        invalidPlayer.setReady(true);
+        invalidPlayer.setPoints(0);
+        assertThrows(Exception.class, () -> playerRepository.save(invalidPlayer));
+
     }
 
     // Method to refactor PlayerRepository findById() method. 

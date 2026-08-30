@@ -56,5 +56,10 @@ CREATE TABLE Player
     PRIMARY KEY (id),
     UNIQUE (id),
     FOREIGN KEY (game_id) REFERENCES Game(id) ON DELETE SET NULL,
-    CHECK ((game_id IS NULL AND points = 0) OR (game_id IS NOT NULL))
+    CHECK ((game_id IS NULL AND points = 0 AND ready = FALSE) OR (game_id IS NOT NULL))
 );
+
+
+-- TODO: Create a trigger for incrementing the player count of a game when
+--      a player enters the game.
+-- CREATE TRIGGER increment_player_count

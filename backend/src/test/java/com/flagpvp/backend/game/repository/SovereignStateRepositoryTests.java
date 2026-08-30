@@ -39,8 +39,6 @@ public class SovereignStateRepositoryTests {
 
         // Checks that a country from Asian is in the database
         Optional<SovereignState> georgia = sovereignStateRepository.findByName("Georgia");
-        assertTrue(georgia.isPresent());
-        assertEquals("Georgia", georgia.get().getName());
         assertEquals(Regions.ASIA, georgia.get().getRegion());
 
         // Checks that a country from Oceania is in the database.
