@@ -62,4 +62,7 @@ CREATE TABLE Player
 
 -- TODO: Create a trigger for incrementing the player count of a game when
 --      a player enters the game.
--- CREATE TRIGGER increment_player_count
+/*
+CREATE TRIGGER increment_player_count
+FOR UPDATE ON Player
+*/

@@ -24,19 +24,23 @@ public class GameRegionRepositoryTests {
         // The ID that will be used to find the GameRegion.
         GameRegionId id = new GameRegionId(12345L, Regions.AMERICAS);
 
-        // Gets an existing game with the AMERICAS region
-        // and checks that all the settings are correct.
-        Optional<GameRegion> gameRegion = gameRegionRepository.findByGameRegionId(id);
+        // Gets an existing game with the AMERICAS region.
+        Optional<GameRegion> gameRegion = findById(id);
         assertTrue(gameRegion.isPresent());
-        assertEquals(12345, gameRegion.get().getGameRegionId().getGameId());
-        assertEquals(Regions.AMERICAS, gameRegion.get().getGameRegionId().getRegion());
+        
+        // Checks that all values are correct for the AMERICAS region.
+        GameRegion gameRegionObj = gameRegion.get();
+        assertEquals(12345, gameRegionObj.getGameRegionId().getGameId());
+        assertEquals(Regions.AMERICAS, gameRegionObj.getGameRegionId().getRegion());
 
-        // Gets an existing game with the ASIA region
-        // and checks that all the settings are correct.
+        // Gets an existing game with the ASIA region.
         id = new GameRegionId(12345L, Regions.ASIA);
-        gameRegion = gameRegionRepository.findByGameRegionId(id);
+        gameRegion = findById(id);
+
+        // Checks that all the settings are correct for the ASIA region.
+        gameRegionObj = gameRegion.get();
         assertTrue(gameRegion.isPresent());
-        assertEquals(Regions.ASIA, gameRegion.get().getGameRegionId().getRegion());
+        assertEquals(Regions.ASIA, gameRegionObj.getGameRegionId().getRegion());
     }
 
     @Test
@@ -46,14 +50,14 @@ public class GameRegionRepositoryTests {
         GameRegionId id = new GameRegionId(0L, Regions.EUROPE);
 
         // Checks that the GameRegion does not exist.
-        Optional<GameRegion> gameRegion = gameRegionRepository.findByGameRegionId(id);
+        Optional<GameRegion> gameRegion = findById(id);
         assertFalse(gameRegion.isPresent());
 
         // An ID that exists but not with the specified region.
         id = new GameRegionId(12345L, Regions.OCEANIA);
 
         // Checks that the GameRegion does not exist.
-        gameRegion = gameRegionRepository.findByGameRegionId(id);
+        gameRegion = findById(id);
         assertFalse(gameRegion.isPresent());
 
     }
@@ -62,12 +66,12 @@ public class GameRegionRepositoryTests {
     @DirtiesContext
     public void shouldCreateAGameRegionWithAGameThatExists() {
 
-        // Creates a new game with the EUROPE region and saves it to the database.
+        // Creates a new game with the EUROPE region and saves it to the repository.
         GameRegionId newId = new GameRegionId(12345L, Regions.EUROPE);
-        gameRegionRepository.save(new GameRegion(newId));
+        saveGameRegion(new GameRegion(newId));
 
-        // Checks that the new GameRegion exists in the database.
-        Optional<GameRegion> newGameRegion = gameRegionRepository.findByGameRegionId(newId);
+        // Checks that the new GameRegion exists in the repository.
+        Optional<GameRegion> newGameRegion = findById(newId);
         assertTrue(newGameRegion.isPresent());
     }
 
@@ -77,6 +81,16 @@ public class GameRegionRepositoryTests {
         // Creates a GameRegion with a game ID that does not exist
         // and checks that an error is thrown.
         GameRegion newGameRegion = new GameRegion(new GameRegionId(0L, Regions.EUROPE));
-        assertThrows(Exception.class, () ->  gameRegionRepository.save(newGameRegion) );
+        assertThrows(Exception.class, () ->  saveGameRegion(newGameRegion) );
+    }
+
+    // Method to refactor GameRegion save() method.
+    private GameRegion saveGameRegion(GameRegion gameRegion) {
+        return gameRegionRepository.save(gameRegion);
+    }
+
+    // Method to refactor GameRegion findById() method.
+    private Optional<GameRegion> findById(GameRegionId id) {
+        return gameRegionRepository.findByGameRegionId(id);
     }
 }

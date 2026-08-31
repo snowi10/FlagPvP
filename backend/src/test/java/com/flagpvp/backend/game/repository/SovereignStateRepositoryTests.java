@@ -36,9 +36,10 @@ public class SovereignStateRepositoryTests {
         assertTrue(kenya.isPresent());
         assertEquals("Kenya", kenya.get().getName());
         assertEquals(Regions.AFRICA, kenya.get().getRegion());
-
         // Checks that a country from Asian is in the database
         Optional<SovereignState> georgia = sovereignStateRepository.findByName("Georgia");
+        assertTrue(georgia.isPresent());
+        assertEquals("Georgia", georgia.get().getName());
         assertEquals(Regions.ASIA, georgia.get().getRegion());
 
         // Checks that a country from Oceania is in the database.
@@ -46,11 +47,12 @@ public class SovereignStateRepositoryTests {
         assertTrue(tonga.isPresent());
         assertEquals("Tonga", tonga.get().getName());
         assertEquals(Regions.OCEANIA, tonga.get().getRegion());
-
     }
 
     @Test
     public void shouldNotGetAStateThatDoesNotExist() {
+
+        // Gets a state that does not exist.
         Optional<SovereignState> doesNotExist = sovereignStateRepository.findByName("does not exist");
         assertFalse(doesNotExist.isPresent());
     }

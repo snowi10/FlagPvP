@@ -20,20 +20,23 @@ public class GameRepositoryTests {
     @Test
     public void shouldGetAGameThatExists() {
 
-        // Finds a game in the database and checks for the correct settings.
-        Optional<Game> game = gameRepository.findById(12345L);
+        // Finds a game in the repository.
+        Optional<Game> game = findById(12345L);
         assertTrue(game.isPresent());
-        assertEquals(GameMode.SINGLEPLAYER, game.get().getMode());
-        assertEquals(false, game.get().getTimed());
-        assertEquals(1, game.get().getPlayerCount());
-        assertEquals(false, game.get().getInProgress());
+
+        // Checks for the correct settings.
+        Game gameObj = game.get();
+        assertEquals(GameMode.SINGLEPLAYER, gameObj.getMode());
+        assertEquals(false, gameObj.getTimed());
+        assertEquals(1, gameObj.getPlayerCount());
+        assertEquals(false, gameObj.getInProgress());
     }
 
     @Test
     public void shouldNotGetAGameThatDoesNotExist() {
 
         // Gets a game that does not exist.
-        Optional<Game> game = gameRepository.findById(0L);
+        Optional<Game> game = findById(0L);
         assertFalse(game.isPresent());
     }
 
@@ -43,15 +46,18 @@ public class GameRepositoryTests {
 
         // Creates a new game with default settings.
         Game newGame = new Game();
-        gameRepository.save(newGame);
+        saveGame(newGame);
+
+        // Checks that the game exists in the repository.
+        Optional<Game> createdGame = findById(newGame.getId());
+        assertTrue(createdGame.isPresent());
 
         // Checks that the created game has the default settings.
-        Optional<Game> createdGame = gameRepository.findById(newGame.getId());
-        assertTrue(createdGame.isPresent());
-        assertEquals(GameMode.SINGLEPLAYER, createdGame.get().getMode());
-        assertEquals(false, createdGame.get().getTimed());
-        assertEquals(1, createdGame.get().getPlayerCount());
-        assertEquals(false, createdGame.get().getInProgress());
+        Game createdGameObj = createdGame.get();
+        assertEquals(GameMode.SINGLEPLAYER, createdGameObj.getMode());
+        assertEquals(false, createdGameObj.getTimed());
+        assertEquals(1, createdGameObj.getPlayerCount());
+        assertEquals(false, createdGameObj.getInProgress());
     }
 
     @Test
@@ -60,40 +66,49 @@ public class GameRepositoryTests {
 
         // Creates a new game with supplied settings.
         Game newGame = new Game(null, GameMode.MULTIPLAYER, true, 2, true);
-        gameRepository.save(newGame);
+        saveGame(newGame);
+
+        // Checks that the created game exists in the repository.
+        Optional<Game> createdGame = findById(newGame.getId());
+        assertTrue(createdGame.isPresent());
 
         // Checks that the created game has the supplied settings.
-        Optional<Game> createdGame = gameRepository.findById(newGame.getId());
-        assertTrue(createdGame.isPresent());
-        assertEquals(GameMode.MULTIPLAYER, createdGame.get().getMode());
-        assertEquals(true, createdGame.get().getTimed());
-        assertEquals(2, createdGame.get().getPlayerCount());
-        assertEquals(true, createdGame.get().getInProgress());
+        Game createdGameObj = createdGame.get();
+        assertEquals(GameMode.MULTIPLAYER, createdGameObj.getMode());
+        assertEquals(true, createdGameObj.getTimed());
+        assertEquals(2, createdGameObj.getPlayerCount());
+        assertEquals(true, createdGameObj.getInProgress());
     }
 
     @Test
     @DirtiesContext
     public void shouldUpdateAGame()  {
 
-        // Finds an existing game in the database.
-        Optional<Game> game = gameRepository.findById(12345L);
+        // Finds an existing game in the repository.
+        Optional<Game> game = findById(12345L);
         assertTrue(game.isPresent());
-        assertEquals(GameMode.SINGLEPLAYER, game.get().getMode());
-        assertEquals(false, game.get().getTimed());
-        assertEquals(1, game.get().getPlayerCount());
-        assertEquals(false, game.get().getInProgress());
+
+        // Checks that the game has the correct settings. 
+        Game gameObj = game.get();
+        assertEquals(GameMode.SINGLEPLAYER, gameObj.getMode());
+        assertEquals(false, gameObj.getTimed());
+        assertEquals(1, gameObj.getPlayerCount());
+        assertEquals(false, gameObj.getInProgress());
 
         // Updates the game with new settings.
         Game updatedGame = new Game(game.get().getId(), GameMode.MULTIPLAYER, true, 2, true);
-        gameRepository.save(updatedGame);
+        saveGame(updatedGame);
 
-        // Checks that the game is updated with the new settings.
-        game = gameRepository.findById(12345L);
+        // Checks that the updated game exists. 
+        game = findById(12345L);
         assertTrue(game.isPresent());
-        assertEquals(GameMode.MULTIPLAYER, game.get().getMode());
-        assertEquals(true, game.get().getTimed());
-        assertEquals(2, game.get().getPlayerCount());
-        assertEquals(true, game.get().getInProgress());
+
+        // Checks that the updated game has the new settings.
+        gameObj = game.get();
+        assertEquals(GameMode.MULTIPLAYER, gameObj.getMode());
+        assertEquals(true, gameObj.getTimed());
+        assertEquals(2, gameObj.getPlayerCount());
+        assertEquals(true, gameObj.getInProgress());
     }
 
     // TODO: Fill in this method.
@@ -108,12 +123,22 @@ public class GameRepositoryTests {
     public void shouldDeleteAGameThatExists() {
 
         // Gets a game and deletes it.
-        Optional<Game> game = gameRepository.findById(12345L);
+        Optional<Game> game = findById(12345L);
         assertTrue(game.isPresent());
         gameRepository.deleteById(game.get().getId());
 
-        // Checks that the game is deleted from the database.
-        game = gameRepository.findById(12345L);
+        // Checks that the game is deleted from the repository.
+        game = findById(12345L);
         assertFalse(game.isPresent());
+    }
+
+    // Method to refactor PlayerRepository save() method.
+    private Game saveGame(Game game) {
+        return gameRepository.save(game);
+    }
+
+    // Method to refactor PlayerRepository findById() method. 
+    private Optional<Game> findById(Long id) {
+        return  gameRepository.findById(id);
     }
 }

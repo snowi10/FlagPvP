@@ -19,31 +19,31 @@ public class RegionRepositoryTests {
     @Test
     public void shouldFindAllRegions() {
 
-        // Checks that AMERICAS is in the database.
+        // Checks that AMERICAS is in the repository.
         Optional<Region> americas = regionRepository.findByName(Regions.AMERICAS);
         assertTrue(americas.isPresent());
         assertEquals(Regions.AMERICAS, americas.get().getName());
         assertEquals(35, americas.get().getStatesCount());
 
-        // Checks that EUROPE is in the database.
+        // Checks that EUROPE is in the repository.
         Optional<Region> europe = regionRepository.findByName(Regions.EUROPE);
         assertTrue(europe.isPresent());
         assertEquals(Regions.EUROPE, europe.get().getName());
         assertEquals(44, europe.get().getStatesCount());
 
-        // Checks that AFRICA is in the database.
+        // Checks that AFRICA is in the repository.
         Optional<Region> africa = regionRepository.findByName(Regions.AFRICA);
         assertTrue(africa.isPresent());
         assertEquals(Regions.AFRICA, africa.get().getName());
         assertEquals(54, africa.get().getStatesCount());
 
-        // Checks that ASIA is in the database.
+        // Checks that ASIA is in the repository.
         Optional<Region> asia = regionRepository.findByName(Regions.ASIA);
         assertTrue(asia.isPresent());
         assertEquals(Regions.ASIA, asia.get().getName());
         assertEquals(48, asia.get().getStatesCount());
 
-        // Checks that OCEANIA is in the database.
+        // Checks that OCEANIA is in the repository.
         Optional<Region> oceania = regionRepository.findByName(Regions.OCEANIA);
         assertTrue(oceania.isPresent());
         assertEquals(Regions.OCEANIA, oceania.get().getName());
