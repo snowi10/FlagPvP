@@ -59,10 +59,6 @@ CREATE TABLE Player
     CHECK ((game_id IS NULL AND points = 0 AND ready = FALSE) OR (game_id IS NOT NULL))
 );
 
-
 -- TODO: Create a trigger for incrementing the player count of a game when
 --      a player enters the game.
-/*
-CREATE TRIGGER increment_player_count
-FOR UPDATE ON Player
-*/
+-- CREATE TRIGGER increment_player_count

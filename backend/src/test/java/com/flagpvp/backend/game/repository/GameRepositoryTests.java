@@ -115,7 +115,7 @@ public class GameRepositoryTests {
     @Test
     @DirtiesContext
     public void playerCountShouldNotBeGreaterThanOneInSinglePlayerMode() {
-         
+        
     }
 
     @Test
