@@ -1,3 +1,4 @@
+-- TODO: Move this to MySQL
 -- Game and settings that users will play in.
 CREATE TABLE Game
 (

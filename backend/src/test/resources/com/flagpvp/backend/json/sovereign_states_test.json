@@ -1,0 +1,27 @@
+[
+    {
+        "name": "China",
+        "region": "ASIA"
+    },
+
+    {
+        "name": "Mexico",
+        "region": "AMERICAS"
+    },
+
+    {
+        "name": "Iceland",
+        "region": "EUROPE"
+    },
+
+    {
+        "name": "Ethiopia",
+        "region": "AFRICA"
+    },
+
+    {
+        "name": "Australia",
+        "region": "OCEANIA"
+    }
+    
+]

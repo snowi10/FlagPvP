@@ -1,0 +1,26 @@
+[
+    {
+        "name": "AMERICAS",
+        "statesCount": 35
+    },
+
+    {
+        "name": "EUROPE",
+        "statesCount": 44
+    },
+
+    {
+        "name": "AFRICA",
+        "statesCount": 54
+    },
+
+    {
+        "name": "ASIA",
+        "statesCount": 48
+    },
+
+    {
+        "name": "OCEANIA",
+        "statesCount": 14
+    }
+]
