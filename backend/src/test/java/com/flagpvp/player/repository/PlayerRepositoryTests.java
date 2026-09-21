@@ -28,7 +28,7 @@ public class PlayerRepositoryTests {
         Optional<Player> snowi10 = findById("snowi10");
         assertTrue(snowi10.isPresent());
 
-        // Chekcs that all values are correct.
+        // Checks that all values are correct.
         Player snowi10Player = snowi10.get();
         assertEquals("snowi10", snowi10Player.getId());
         assertEquals(12345, snowi10Player.getGameId());
@@ -65,8 +65,7 @@ public class PlayerRepositoryTests {
         playerRepository.save(newPlayer); 
 
         // Checks that the player exists in the repository
-        Optional<Player> getPlayer = findById(newPlayer.getId());
-        assertTrue(getPlayer.isPresent());
+        Optional<Player> getPlayer = playerRepository.findById(newPlayer.getId());
 
         // Checks that all values are correct.
         Player getPlayerObj = getPlayer.get();

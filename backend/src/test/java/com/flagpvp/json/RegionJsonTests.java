@@ -1,7 +1,5 @@
 package com.flagpvp.json;
 
-// TODO: Fill in this test class.
-
 import com.flagpvp.game.domain.entity.Region;
 import com.flagpvp.game.domain.entity.Regions;
 
