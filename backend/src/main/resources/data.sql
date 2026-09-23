@@ -1,13 +1,13 @@
 -- TODO: Move this to MySQL
-   
-/* Region table data. */
+/*  
+/* Region table data.
 INSERT INTO Region (name, states_count) VALUES ('AMERICAS', 0);
 INSERT INTO Region (name, states_count) VALUES ('EUROPE', 0);
 INSERT INTO Region (name, states_count) VALUES ('AFRICA', 0);
 INSERT INTO Region (name, states_count) VALUES ('ASIA', 0);
 INSERT INTO Region (name, states_count) VALUES ('OCEANIA', 0);
 
-/* Sovereign_State table data. */
+/* Sovereign_State table data.
 INSERT INTO Sovereign_State (name, region) VALUES ('Afghanistan', 'ASIA');
 INSERT INTO Sovereign_State (name, region) VALUES ('Albania', 'EUROPE');
 INSERT INTO Sovereign_State (name, region) VALUES ('Algeria', 'AFRICA');
@@ -215,7 +215,7 @@ INSERT INTO Sovereign_State (name, region) VALUES ('Zimbabwe', 'AFRICA');
 -- INSERT INTO Sovereign_State (name, region) VALUES ('Taiwan', 'ASIA');
 -- INSERT INTO Sovereign_State (name, region) VALUES ('Transnistria', 'EUROPE');
 
-/* Updates the number of states for each region in the Region table. */
+/* Updates the number of states for each region in the Region table. 
 UPDATE Region
 SET states_count = (SELECT COUNT(*)
                     FROM Sovereign_State
@@ -245,3 +245,4 @@ SET states_count = (SELECT COUNT(*)
                     FROM Sovereign_State
                     WHERE Sovereign_State.region = 'OCEANIA') -- Should be 14.
 WHERE Region.name = 'OCEANIA';
+*/

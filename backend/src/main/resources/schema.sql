@@ -1,5 +1,6 @@
 -- TODO: Move this to MySQL
 -- Game and settings that users will play in.
+/*
 CREATE TABLE Game
 (
     id INT NOT NULL DEFAULT RAND(), -- TODO: Figure out a better way to randomly generate the game ID.
@@ -14,6 +15,7 @@ CREATE TABLE Game
 
 -- Specifies each sovereign state's region.
 -- Players can choose which regions to be quizzed on.
+
 CREATE TABLE Region
 (
     name VARCHAR(20) NOT NULL,
@@ -63,3 +65,4 @@ CREATE TABLE Player
 -- TODO: Create a trigger for incrementing the player count of a game when
 --      a player enters the game.
 -- CREATE TRIGGER increment_player_count
+*/

@@ -1,8 +1,8 @@
-package com.flagpvp.game.controller;
+package com.flagpvp.sovereignstate.controller;
 
 import java.util.Optional;
 
-import com.flagpvp.game.repository.SovereignStateRepository;
+import com.flagpvp.sovereignstate.repository.SovereignStateRepository;
 import com.flagpvp.game.domain.entity.SovereignState;
 
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.flagpvp.game.repository;
+package com.flagpvp.sovereignstate.repository;
 
 import com.flagpvp.game.domain.entity.SovereignState;
 import org.springframework.data.repository.CrudRepository;

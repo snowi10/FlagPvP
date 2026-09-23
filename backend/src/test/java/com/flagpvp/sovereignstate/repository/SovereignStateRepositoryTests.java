@@ -1,4 +1,4 @@
-package com.flagpvp.game.repository;
+package com.flagpvp.sovereignstate.repository;
 
 import com.flagpvp.game.domain.entity.Regions;
 import com.flagpvp.game.domain.entity.SovereignState;
@@ -31,12 +31,13 @@ public class SovereignStateRepositoryTests {
         assertEquals("Russia", russia.get().getName());
         assertEquals(Regions.EUROPE, russia.get().getRegion());
 
-        // Checks that a country from Africa is in the database.\
+        // Checks that a country from Africa is in the database.
         Optional<SovereignState> kenya = sovereignStateRepository.findByName("Kenya");
         assertTrue(kenya.isPresent());
         assertEquals("Kenya", kenya.get().getName());
         assertEquals(Regions.AFRICA, kenya.get().getRegion());
-        // Checks that a country from Asian is in the database
+
+        // Checks that a country from Asia is in the database
         Optional<SovereignState> georgia = sovereignStateRepository.findByName("Georgia");
         assertTrue(georgia.isPresent());
         assertEquals("Georgia", georgia.get().getName());
