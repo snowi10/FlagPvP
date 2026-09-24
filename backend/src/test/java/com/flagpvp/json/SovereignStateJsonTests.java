@@ -1,7 +1,7 @@
 package com.flagpvp.json;
 
-import com.flagpvp.game.domain.entity.SovereignState;
 import com.flagpvp.game.domain.entity.Regions;
+import com.flagpvp.sovereignstate.domain.entity.SovereignState;
 
 import java.io.IOException;
 
@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
 
+// TODO: Change 'null' when declaring a new instance of a SovereignState object.
+// TODO: Update JSON content to have the flag image URL of each sovereign state.
 @JsonTest
 public class SovereignStateJsonTests {
 
@@ -29,11 +31,11 @@ public class SovereignStateJsonTests {
     @BeforeEach
     void setUp() {
         sovereignStates = Arrays.array(
-            new SovereignState("China", Regions.ASIA), 
-            new SovereignState("Mexico", Regions.AMERICAS),
-            new SovereignState("Iceland", Regions.EUROPE),
-            new SovereignState("Ethiopia", Regions.AFRICA),
-            new SovereignState("Australia", Regions.OCEANIA)
+            new SovereignState("China", Regions.ASIA, null), 
+            new SovereignState("Mexico", Regions.AMERICAS, null),
+            new SovereignState("Iceland", Regions.EUROPE, null),
+            new SovereignState("Ethiopia", Regions.AFRICA, null),
+            new SovereignState("Australia", Regions.OCEANIA, null)
         );
     }
 
@@ -41,7 +43,7 @@ public class SovereignStateJsonTests {
     void sovereignStateSerializationTest() throws IOException {
 
         // The sovereign state to be serialized.
-        SovereignState sovereignState = new SovereignState("Laos", Regions.ASIA); 
+        SovereignState sovereignState = new SovereignState("Laos", Regions.ASIA, null); 
 
         // Checks that the sovereign state serializes to a JSON content correctly.
         assertThat(json.write(sovereignState)).isStrictlyEqualToJson("sovereign_state_test.json");
@@ -64,7 +66,7 @@ public class SovereignStateJsonTests {
             """;
 
             // Checks that the expected content of the JSON file deserializes to a Sovereign State object.
-            assertThat(json.parse(expected)).isEqualTo(new SovereignState("Laos", Regions.ASIA));
+            assertThat(json.parse(expected)).isEqualTo(new SovereignState("Laos", Regions.ASIA, null));
             assertThat(json.parseObject(expected).name()).isEqualTo("Laos");
             assertThat(json.parseObject(expected).region()).isEqualTo(Regions.ASIA);
     }
