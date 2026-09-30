@@ -1,7 +1,7 @@
 package com.flagpvp.json;
 
-import com.flagpvp.game.domain.entity.Regions;
-import com.flagpvp.sovereignstate.domain.entity.SovereignState;
+import com.flagpvp.domain.Regions;
+import com.flagpvp.domain.SovereignState;
 
 import java.io.IOException;
 
@@ -43,7 +43,9 @@ public class SovereignStateJsonTests {
     void sovereignStateSerializationTest() throws IOException {
 
         // The sovereign state to be serialized.
-        SovereignState sovereignState = new SovereignState("Laos", Regions.ASIA, null); 
+        SovereignState sovereignState = new SovereignState("Laos", 
+                                                           Regions.ASIA, 
+                                                           "https://upload.wikimedia.org/wikipedia/commons/5/56/Flag_of_Laos.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"); 
 
         // Checks that the sovereign state serializes to a JSON content correctly.
         assertThat(json.write(sovereignState)).isStrictlyEqualToJson("sovereign_state_test.json");
@@ -51,6 +53,8 @@ public class SovereignStateJsonTests {
         assertThat(json.write(sovereignState)).extractingJsonPathStringValue("@.name", "Laos");
         assertThat(json.write(sovereignState)).hasJsonPathStringValue("@.region");
         assertThat(json.write(sovereignState)).extractingJsonPathStringValue("@.region", Regions.ASIA);
+        assertThat(json.write(sovereignState)).hasJsonPathStringValue("@.flagImage");
+        assertThat(json.write(sovereignState)).extractingJsonPathStringValue("@.flagImage", "https://upload.wikimedia.org/wikipedia/commons/5/56/Flag_of_Laos.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original");
     }
 
     @Test
@@ -61,7 +65,7 @@ public class SovereignStateJsonTests {
             {
                 "name": "Laos",
                 "region": "ASIA"
-                
+                "flag_image": "https://upload.wikimedia.org/wikipedia/commons/5/56/Flag_of_Laos.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original" 
             } 
             """;
 
@@ -69,6 +73,7 @@ public class SovereignStateJsonTests {
             assertThat(json.parse(expected)).isEqualTo(new SovereignState("Laos", Regions.ASIA, null));
             assertThat(json.parseObject(expected).name()).isEqualTo("Laos");
             assertThat(json.parseObject(expected).region()).isEqualTo(Regions.ASIA);
+            assertThat(json.parseObject(expected).flagImage()).isEqualTo("https://upload.wikimedia.org/wikipedia/commons/5/56/Flag_of_Laos.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original");
     }
 
     @Test

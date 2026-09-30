@@ -1,8 +1,5 @@
 package com.flagpvp.json;
 
-import com.flagpvp.game.domain.entity.Region;
-import com.flagpvp.game.domain.entity.Regions;
-
 import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
@@ -13,6 +10,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
 import org.springframework.boot.test.json.JacksonTester;
+
+import com.flagpvp.domain.Region;
+import com.flagpvp.domain.Regions;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 @JsonTest
