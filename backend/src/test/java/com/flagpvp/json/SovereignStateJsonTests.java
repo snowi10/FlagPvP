@@ -31,11 +31,15 @@ public class SovereignStateJsonTests {
     @BeforeEach
     void setUp() {
         sovereignStates = Arrays.array(
-            new SovereignState("China", Regions.ASIA, null), 
-            new SovereignState("Mexico", Regions.AMERICAS, null),
-            new SovereignState("Iceland", Regions.EUROPE, null),
-            new SovereignState("Ethiopia", Regions.AFRICA, null),
-            new SovereignState("Australia", Regions.OCEANIA, null)
+            new SovereignState("China", Regions.ASIA, "https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+), 
+            new SovereignState("Mexico", Regions.AMERICAS, "https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+),
+            new SovereignState("Iceland", Regions.EUROPE, "https://upload.wikimedia.org/wikipedia/commons/c/ce/Flag_of_Iceland.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+),
+            new SovereignState("Ethiopia", Regions.AFRICA, "https://upload.wikimedia.org/wikipedia/commons/7/71/Flag_of_Ethiopia.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
+),
+            new SovereignState("Australia", Regions.OCEANIA, "https://upload.wikimedia.org/wikipedia/commons/8/88/Flag_of_Australia_%28converted%29.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original")
         );
     }
 
@@ -64,13 +68,13 @@ public class SovereignStateJsonTests {
         String expected = """
             {
                 "name": "Laos",
-                "region": "ASIA"
-                "flag_image": "https://upload.wikimedia.org/wikipedia/commons/5/56/Flag_of_Laos.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original" 
+                "region": "ASIA",
+                "flagImage": "https://upload.wikimedia.org/wikipedia/commons/5/56/Flag_of_Laos.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original" 
             } 
             """;
 
             // Checks that the expected content of the JSON file deserializes to a Sovereign State object.
-            assertThat(json.parse(expected)).isEqualTo(new SovereignState("Laos", Regions.ASIA, null));
+            assertThat(json.parse(expected)).isEqualTo(new SovereignState("Laos", Regions.ASIA, "https://upload.wikimedia.org/wikipedia/commons/5/56/Flag_of_Laos.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"));
             assertThat(json.parseObject(expected).name()).isEqualTo("Laos");
             assertThat(json.parseObject(expected).region()).isEqualTo(Regions.ASIA);
             assertThat(json.parseObject(expected).flagImage()).isEqualTo("https://upload.wikimedia.org/wikipedia/commons/5/56/Flag_of_Laos.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original");
@@ -92,27 +96,32 @@ public class SovereignStateJsonTests {
             [
                 {
                     "name": "China",
-                    "region": "ASIA"
+                    "region": "ASIA",
+                    "flagImage": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
                 },
 
                 {
                     "name": "Mexico",
-                    "region": "AMERICAS"
+                    "region": "AMERICAS",
+                    "flagImage": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
                 },
 
                 {
                     "name": "Iceland",
-                    "region": "EUROPE"
+                    "region": "EUROPE",
+                    "flagImage": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Flag_of_Iceland.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
                 },
 
                 {
                     "name": "Ethiopia",
-                    "region": "AFRICA"
+                    "region": "AFRICA",
+                    "flagImage": "https://upload.wikimedia.org/wikipedia/commons/7/71/Flag_of_Ethiopia.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
                 },
 
                 {
                     "name": "Australia",
-                    "region": "OCEANIA"
+                    "region": "OCEANIA",
+                    "flagImage": "https://upload.wikimedia.org/wikipedia/commons/8/88/Flag_of_Australia_%28converted%29.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
                 }
             ]
         """; 

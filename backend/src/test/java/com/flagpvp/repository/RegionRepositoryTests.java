@@ -3,6 +3,8 @@ package com.flagpvp.repository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jdbc.test.autoconfigure.DataJdbcTest;
+import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase;
+import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase.Replace;
 
 import com.flagpvp.domain.Region;
 import com.flagpvp.domain.Regions;
@@ -12,6 +14,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJdbcTest
+@AutoConfigureTestDatabase(replace=Replace.NONE)
 public class RegionRepositoryTests {
 
     @Autowired

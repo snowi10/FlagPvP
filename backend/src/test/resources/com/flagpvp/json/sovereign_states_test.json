@@ -1,27 +1,32 @@
 [
     {
         "name": "China",
-        "region": "ASIA"
+        "region": "ASIA",
+        "flagImage": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
     },
 
     {
         "name": "Mexico",
-        "region": "AMERICAS"
+        "region": "AMERICAS",
+        "flagImage": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
     },
 
     {
         "name": "Iceland",
-        "region": "EUROPE"
+        "region": "EUROPE",
+        "flagImage": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Flag_of_Iceland.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
     },
 
     {
         "name": "Ethiopia",
-        "region": "AFRICA"
+        "region": "AFRICA",
+        "flagImage": "https://upload.wikimedia.org/wikipedia/commons/7/71/Flag_of_Ethiopia.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
     },
 
     {
         "name": "Australia",
-        "region": "OCEANIA"
+        "region": "OCEANIA",
+        "flagImage": "https://upload.wikimedia.org/wikipedia/commons/8/88/Flag_of_Australia_%28converted%29.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
     }
     
 ]
