@@ -77,8 +77,7 @@
             <version>2.3.232</version>
         </dependency>
         -->
-
-        <!-- Container -->
+        <!-- TODO: Do not need these right now (Container) 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-docker-compose</artifactId>
@@ -98,6 +97,7 @@
             <artifactId>testcontainers-mysql</artifactId>
             <scope>test</scope>
         </dependency>
+        -->
 
         <!-- Rest Client -->
         <dependency>
