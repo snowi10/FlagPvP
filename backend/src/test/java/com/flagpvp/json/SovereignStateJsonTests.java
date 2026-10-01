@@ -15,8 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
 
-// TODO: Change 'null' when declaring a new instance of a SovereignState object.
-// TODO: Update JSON content to have the flag image URL of each sovereign state.
 @JsonTest
 public class SovereignStateJsonTests {
 
