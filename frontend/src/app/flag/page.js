@@ -1,22 +1,14 @@
-import styles from './flag.module.css'
+import DisplayFlag from './guess-flag.js'
 const STATE = 'Georgia';
 
-async function GetState() {
+/**
+ * Gets a sovereign state from the database.
+ * @returns the DisplayFlag component with the flag of the sovereign state.
+ */ 
+export default async function GetFlag() {
     const state = await fetch(`http://localhost:8080/sovereignState/${STATE}`);
     const state_content = await state.json();
-    const image = state_content.flagImage; 
+    const url = state_content.flagUrl;
 
-    return (
-        <div id={styles.flag_container}>
-            <img id={styles.flag} src={image}></img>
-        </div>
-    ) 
-}
-
-export default function DisplayFlag() {
-    return (
-        <div>
-            <GetState/> 
-        </div>
-    )
+    return <DisplayFlag flag_url={url} />
 }

@@ -20,7 +20,7 @@ function GuessInput() {
 
 /**
  * Displays the screen where users guess the current flag. 
- * @param {string} { flag } - The URL of the of image of the flag. 
+ * @param {string} param0 - The URL of the of image of the flag. 
  * @returns the GetFlag component and the GuessInput component.
  */
 export default function DisplayFlag({ flag_url }) {
