@@ -1,15 +1,35 @@
 #flag_container {
-    margin-left: auto;
-    margin-right: auto;
-    width: 500px;
-    height: 300px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    /*height: 300px;*/
     /*border: 5px solid black;*/
 }
 
 #flag {
+    position: relative;
+    display: block;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-    height: 100%;
+    height: 300px; 
     object-fit: contain;
+}
+
+#guess_form {
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#guess_input {
+    display: block;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 30px;
+}
+
+#guess_check {
 }
