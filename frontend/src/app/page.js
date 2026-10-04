@@ -1,6 +1,6 @@
-import DisplayFlag from "./flag/page";
+import GetFlag from './flag/page.js'
 
 // TODO: Rename.
 export default function Game() {
-  return <DisplayFlag />;
+    return <GetFlag />
 }
