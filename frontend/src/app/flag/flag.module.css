@@ -1,7 +1,6 @@
 #flag_container {
     margin-top: 5%;
     margin-bottom: 5%;
-    /*height: 300px;*/
     /*border: 5px solid black;*/
 }
 
@@ -31,5 +30,9 @@
     height: 30px;
 }
 
-#guess_check {
+#answer {
+    display: block; 
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
