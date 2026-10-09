@@ -8,9 +8,9 @@ import com.flagpvp.domain.Regions;
 import java.util.Optional;
 
 /**
- * Repository for the region.
+ * Repository for the Region entity.
  */
-public interface RegionRepository extends CrudRepository<Region, String> {
+public interface RegionRepository extends CrudRepository<Region, Regions> {
 
     // Finds a region by its name.
     Optional<Region> findByName(Regions name);
