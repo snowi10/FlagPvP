@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/sovereignState")
 public class SovereignStateController {
 
-    // The repository that will be used to get the sovereign state.
+    // The repository that will be used to get the sovereign state object.
     private final SovereignStateRepository sovereignStateRepository;
 
     public SovereignStateController(SovereignStateRepository sovereignStateRepository) {
@@ -27,8 +27,8 @@ public class SovereignStateController {
      * Gets the specifed sovereign state.
      * 
      * @param name the name of the sovereign state.
-     * @return a Response Entity with an HTTP status of 'OK' and the sovereign state object or
-     *         a Response Entity with an HTTP status of 'NOT FOUND'.
+     * @return a response entity with an HTTP status of 'OK' and the sovereign state object or
+     *         a response entity with an HTTP status of 'NOT FOUND'.
      */
     @GetMapping("/{name}")
     public ResponseEntity<SovereignState> getSovereignState(@PathVariable String name) {
@@ -37,8 +37,7 @@ public class SovereignStateController {
         if (sovereignState.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
-        else {
-            return ResponseEntity.ok(sovereignState.get());
-        }
+
+        return ResponseEntity.ok(sovereignState.get());
     }
 }
