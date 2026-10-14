@@ -1,29 +1,27 @@
-package com.flagpvp.domain;
+package com.flagpvp.domain.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+import com.flagpvp.domain.RegionName;
+
 /**
- * The sovereign state entity.
+ * The SovereignState entity/object.
  * Each state is part of a region.
- *
- * @param name the name of the sovereign state.
- * @param region the region that the sovereign state is in.
- * @param flagUrl the URL of the image
  */
 @Table
 public record SovereignState(
-        @Id @Column String name,
-        @Column Regions region,
-        @Column String flagUrl)
+        @Id @Column String name,    // The name of the sovereign state.
+        @Column RegionName region,  // The region that the sovereign state is in.
+        @Column String flagUrl)     // The image URL of the flag. 
 {
 
     // Getters for SovereignState attributes.
     public String getName() {
         return name;
     }
-    public Regions getRegion() {
+    public RegionName getRegion() {
         return region;
     }
     public String getFlagUrl() {

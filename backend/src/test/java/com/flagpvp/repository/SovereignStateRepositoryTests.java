@@ -1,7 +1,7 @@
 package com.flagpvp.repository;
 
-import com.flagpvp.domain.Regions;
-import com.flagpvp.domain.SovereignState;
+import com.flagpvp.domain.RegionName;
+import com.flagpvp.domain.entity.SovereignState;
 
 import org.junit.jupiter.api.Test;
 
@@ -28,35 +28,35 @@ public class SovereignStateRepositoryTests {
         Optional<SovereignState> chile = sovereignStateRepository.findByName("Chile");
         assertTrue(chile.isPresent());
         assertEquals("Chile", chile.get().getName());
-        assertEquals(Regions.AMERICAS, chile.get().getRegion());
+        assertEquals(RegionName.AMERICAS, chile.get().getRegion());
         assertNotNull(chile.get().getFlagUrl());
 
         // Checks that a country from Europe is in the database.
         Optional<SovereignState> russia = sovereignStateRepository.findByName("Russia");
         assertTrue(russia.isPresent());
         assertEquals("Russia", russia.get().getName());
-        assertEquals(Regions.EUROPE, russia.get().getRegion());
+        assertEquals(RegionName.EUROPE, russia.get().getRegion());
         assertNotNull(russia.get().getFlagUrl());
 
         // Checks that a country from Africa is in the database.
         Optional<SovereignState> kenya = sovereignStateRepository.findByName("Kenya");
         assertTrue(kenya.isPresent());
         assertEquals("Kenya", kenya.get().getName());
-        assertEquals(Regions.AFRICA, kenya.get().getRegion());
+        assertEquals(RegionName.AFRICA, kenya.get().getRegion());
         assertNotNull(kenya.get().getFlagUrl());
 
         // Checks that a country from Asia is in the database
         Optional<SovereignState> georgia = sovereignStateRepository.findByName("Georgia");
         assertTrue(georgia.isPresent());
         assertEquals("Georgia", georgia.get().getName());
-        assertEquals(Regions.ASIA, georgia.get().getRegion());
+        assertEquals(RegionName.ASIA, georgia.get().getRegion());
         assertNotNull(georgia.get().getFlagUrl());
 
         // Checks that a country from Oceania is in the database.
         Optional<SovereignState> tonga = sovereignStateRepository.findByName("Tonga");
         assertTrue(tonga.isPresent());
         assertEquals("Tonga", tonga.get().getName());
-        assertEquals(Regions.OCEANIA, tonga.get().getRegion());
+        assertEquals(RegionName.OCEANIA, tonga.get().getRegion());
         assertNotNull(tonga.get().getFlagUrl());
     }
 

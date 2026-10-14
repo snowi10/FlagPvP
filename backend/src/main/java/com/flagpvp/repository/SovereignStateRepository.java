@@ -2,7 +2,7 @@ package com.flagpvp.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.flagpvp.domain.SovereignState;
+import com.flagpvp.domain.entity.SovereignState;
 
 import java.util.Optional;
 

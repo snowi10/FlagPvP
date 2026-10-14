@@ -1,10 +1,9 @@
 package com.flagpvp.domain;
 
 /**
- * Regions that players can choose from
- * to be quizzed on.
+ * Regions that players can choose from to be quizzed on.
  */
-public enum Regions {
+public enum RegionName {
     AMERICAS,
     EUROPE,
     AFRICA,

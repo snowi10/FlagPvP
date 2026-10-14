@@ -11,8 +11,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
 import org.springframework.boot.test.json.JacksonTester;
 
-import com.flagpvp.domain.Region;
-import com.flagpvp.domain.Regions;
+import com.flagpvp.domain.RegionName;
+import com.flagpvp.domain.entity.Region;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -30,11 +30,11 @@ public class RegionJsonTests {
     @BeforeEach
     void setUp() {
         regions = Arrays.array(
-            new Region(Regions.AMERICAS, 35),
-            new Region(Regions.EUROPE, 44),
-            new Region(Regions.AFRICA, 54),
-            new Region(Regions.ASIA, 48),
-            new Region(Regions.OCEANIA, 14)
+            new Region(RegionName.AMERICAS, 35),
+            new Region(RegionName.EUROPE, 44),
+            new Region(RegionName.AFRICA, 54),
+            new Region(RegionName.ASIA, 48),
+            new Region(RegionName.OCEANIA, 14)
         );
     }
 
@@ -42,12 +42,12 @@ public class RegionJsonTests {
     void regionSerializationTest() throws IOException {
 
         // The region to be serialized.
-        Region region = new Region(Regions.AMERICAS, 35);          
+        Region region = new Region(RegionName.AMERICAS, 35);          
 
         // Checks that the region serializes to a JSON content correctly.
         assertThat(json.write(region)).isStrictlyEqualToJson("region_test.json");
         assertThat(json.write(region)).hasJsonPathStringValue("@.name");
-        assertThat(json.write(region)).extractingJsonPathStringValue("@.name", Regions.AMERICAS);
+        assertThat(json.write(region)).extractingJsonPathStringValue("@.name", RegionName.AMERICAS);
         assertThat(json.write(region)).hasJsonPathNumberValue("@.statesCount");
         assertThat(json.write(region)).extractingJsonPathNumberValue("@.statesCount", 35);
     }
@@ -64,8 +64,8 @@ public class RegionJsonTests {
             """;
 
         // Checks that the expected content of the JSON file deserializes to a Region object.
-        assertThat(json.parseObject(expected)).isEqualTo(new Region(Regions.AMERICAS, 35));
-        assertThat(json.parseObject(expected).name()).isEqualTo(Regions.AMERICAS);
+        assertThat(json.parseObject(expected)).isEqualTo(new Region(RegionName.AMERICAS, 35));
+        assertThat(json.parseObject(expected).name()).isEqualTo(RegionName.AMERICAS);
         assertThat(json.parseObject(expected).statesCount()).isEqualTo(35);
     }
 
