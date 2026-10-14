@@ -7,10 +7,10 @@ import com.flagpvp.domain.entity.SovereignState;
 import java.util.Optional;
 
 /**
- * Repository for sovereign state.
+ * Repository for the SovereignState entity.
  */
 public interface SovereignStateRepository extends CrudRepository<SovereignState, String> {
 
-    // Finds a sovereign state by name.
+    // Get a SovereignState entity by its name.
     Optional<SovereignState> findByName(String name);
 }
