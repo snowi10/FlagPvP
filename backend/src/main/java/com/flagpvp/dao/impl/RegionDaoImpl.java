@@ -11,9 +11,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * DAO implementation for the Region entity.
- * 
- * TODO: Create test class for this.
- */
+ */ 
 @Repository 
 public class RegionDaoImpl implements RegionDao {
     
