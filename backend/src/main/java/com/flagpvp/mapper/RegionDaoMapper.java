@@ -19,7 +19,7 @@ public class RegionDaoMapper implements RowMapper<Region> {
 
         try {
 
-            // Get values of 'name' and 'statesCount' column.
+            // Get values of 'name' and 'statesCount' columns.
             RegionName name = RegionName.valueOf(rs.getString("name"));
             int statesCount = rs.getInt("states_count");
 
