@@ -3,20 +3,19 @@ package com.flagpvp.controller;
 import com.flagpvp.domain.RegionName;
 import com.flagpvp.domain.entity.Region;
 import com.flagpvp.dao.impl.RegionDaoImpl;
+import com.flagpvp.dao.RegionDao;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 
 /**
  * Handle HTTP requests for returning Region objects. 
- * 
- * TODO: Create test class for this.
  */
 @RestController 
 @RequestMapping("/region")
 public class RegionController {
 
-    private final RegionDaoImpl regionDao;
+    private final RegionDao regionDao;
 
     public RegionController(RegionDaoImpl regionDao) {
         this.regionDao = regionDao;
