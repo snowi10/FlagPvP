@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import com.flagpvp.mapper.RegionDaoMapper;
 import com.flagpvp.domain.entity.Region;
@@ -12,6 +13,7 @@ import com.flagpvp.domain.RegionName;
 /**
  * Map Region database entity to Region Java object. 
  */
+@Component  
 public class RegionDaoMapper implements RowMapper<Region> {
 
     public Region mapRow(ResultSet rs, int rowNum) {

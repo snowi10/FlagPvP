@@ -17,7 +17,8 @@ public class SovereignStateDaoImpl implements SovereignStateDao{
     @Autowired 
     private JdbcTemplate jdbcTemplate;
 
-    private final SovereignStateDaoMapper sovereignStateDaoMapper = new SovereignStateDaoMapper();
+    @Autowired
+    private SovereignStateDaoMapper sovereignStateDaoMapper;
 
     public SovereignState findByName(String name) {
         return jdbcTemplate.queryForObject("SELECT * FROM sovereign_state WHERE name = ?", sovereignStateDaoMapper, name);

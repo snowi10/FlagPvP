@@ -7,10 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 /**
  * Map SovereignState database entity to SovereignState Java object.
  */
+@Component
 public class SovereignStateDaoMapper implements RowMapper<SovereignState> {
 
     public SovereignState mapRow(ResultSet rs, int rowNum) {

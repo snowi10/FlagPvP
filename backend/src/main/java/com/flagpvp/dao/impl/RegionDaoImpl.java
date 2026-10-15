@@ -18,8 +18,8 @@ public class RegionDaoImpl implements RegionDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    // TODO: Create a bean?
-    private final RegionDaoMapper regionDaoMapper = new RegionDaoMapper();
+    @Autowired  
+    private RegionDaoMapper regionDaoMapper;
 
     public Region findByName(RegionName name) {
         return jdbcTemplate.queryForObject("SELECT * from region WHERE name = ?", regionDaoMapper, name.toString());
