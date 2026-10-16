@@ -13,8 +13,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * DAO 
- * implementation for the SovereignState entity. 
+ * DAO implementation for the SovereignState entity. 
  */
 @Repository 
 public class SovereignStateDaoImpl implements SovereignStateDao {
@@ -33,6 +32,7 @@ public class SovereignStateDaoImpl implements SovereignStateDao {
         StringBuilder regionConditions = new StringBuilder();
         List<String> regionStringList = new ArrayList<String>();
 
+        // Add parameters to query for each RegionName in the region list.
         for (int i = 0; i < regionList.size(); i++) {
             if (i == 0) {
                 regionConditions.append("?");
@@ -41,6 +41,7 @@ public class SovereignStateDaoImpl implements SovereignStateDao {
                 regionConditions.append(", ?");
             }
 
+            // Convert RegionName to string to use as arguments in query.
             regionStringList.add(regionList.get(i).toString());
         }
         
