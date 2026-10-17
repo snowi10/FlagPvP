@@ -56,7 +56,6 @@ public class SovereignStateDaoImplTests {
 
     @Test
     public void shouldNotGetASovereignStateThatDoesNotExist() {
-
         // Get a SovereignState entity that does not exist.
        assertThrows(EmptyResultDataAccessException.class, () -> sovereignStateDao.findByName("doesNotExist"));
     }
