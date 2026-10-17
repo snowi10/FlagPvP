@@ -29,14 +29,10 @@ public class SovereignStateJsonTests {
     @BeforeEach
     void setUp() {
         sovereignStates = Arrays.array(
-            new SovereignState("China", RegionName.ASIA, "https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
-), 
-            new SovereignState("Mexico", RegionName.AMERICAS, "https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
-),
-            new SovereignState("Iceland", RegionName.EUROPE, "https://upload.wikimedia.org/wikipedia/commons/c/ce/Flag_of_Iceland.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
-),
-            new SovereignState("Ethiopia", RegionName.AFRICA, "https://upload.wikimedia.org/wikipedia/commons/7/71/Flag_of_Ethiopia.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"
-),
+            new SovereignState("China", RegionName.ASIA, "https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"), 
+            new SovereignState("Mexico", RegionName.AMERICAS, "https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"),
+            new SovereignState("Iceland", RegionName.EUROPE, "https://upload.wikimedia.org/wikipedia/commons/c/ce/Flag_of_Iceland.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"),
+            new SovereignState("Ethiopia", RegionName.AFRICA, "https://upload.wikimedia.org/wikipedia/commons/7/71/Flag_of_Ethiopia.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"),
             new SovereignState("Australia", RegionName.OCEANIA, "https://upload.wikimedia.org/wikipedia/commons/8/88/Flag_of_Australia_%28converted%29.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original")
         );
     }
@@ -45,9 +41,7 @@ public class SovereignStateJsonTests {
     void sovereignStateSerializationTest() throws IOException {
 
         // The sovereign state to be serialized.
-        SovereignState sovereignState = new SovereignState("Laos", 
-                                                           RegionName.ASIA, 
-                                                           "https://upload.wikimedia.org/wikipedia/commons/5/56/Flag_of_Laos.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"); 
+        SovereignState sovereignState = new SovereignState("Laos", RegionName.ASIA, "https://upload.wikimedia.org/wikipedia/commons/5/56/Flag_of_Laos.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original"); 
 
         // Checks that the sovereign state serializes to a JSON content correctly.
         assertThat(json.write(sovereignState)).isStrictlyEqualToJson("sovereign_state_test.json");
