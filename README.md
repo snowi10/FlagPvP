@@ -1,4 +1,4 @@
-#FlagPvP
+# FlagPvP
 ## Description
 A web trivia platform that players can compete against each other to guess the flags of various countries.
 ## Progress
